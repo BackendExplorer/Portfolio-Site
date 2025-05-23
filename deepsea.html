@@ -1,62 +1,463 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deep Sea Exploration</title>
-    <link rel="stylesheet" href="css/style.css">
+  <title>ポートフォリオ | バックエンドエンジニア志望</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <style>
+
+
+	
+.tc-body h3 {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 700;
+}
+
+
+.small-fancy-button {
+  display: inline-block;
+  padding: 6px 16px;
+  background: linear-gradient(to right, #28a745, #43c67a); /* 中間トーンの落ち着いた緑 */
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 9999px;
+  font-size: 14px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.small-fancy-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+#two .row {
+  max-width: 900px;     /* 適切な幅を指定 */
+  margin: 0 auto;       /* 左右中央寄せ */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+
+	
+/* ▼追加するコード */
+.task-card .tc-header {
+  background-color: #e6f6ff;   /* 爽やかな青 */
+  /* height: 160px;   ← この行は削除 */
+  padding: 32px 0;             /* ↑↓ に 32px の余白を追加して縦に伸ばす */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+
+section#two h2 {
+  font-size: 1.6em;
+  margin-bottom: 1em;
+  color: #333;
+  text-align: center;
+}
+
+
+.tech-stack-single {
+  max-width: 800px;
+  margin: 3em auto;
+  padding: 0 1em;
+  text-align: center;
+}
+
+.tech-stack-single h3 {
+  font-size: 1.6em;
+  margin-bottom: 1em;
+  color: #333;
+}
+
+.tech-card-single {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  padding: 1.5em 2em;
+  text-align: left;
+}
+
+.tech-card-single ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.tech-card-single li {
+  margin-bottom: 0.8em;
+  font-size: 1em;
+  color: #444;
+}
+
+.tech-card-single li strong {
+  color: #2c3e50;
+}
+
+
+    body {
+      background-color: #f4f6f8;
+    }
+
+    /* セクション1 タイトル・本文 */
+    section#one h2,
+    section#one p {
+      color: #222;
+    }
+
+    /* セクション3 タイトル */
+    section#three h2 {
+      color: #222;
+    }
+    /* セクション3 リスト */
+    section#three ul li {
+      color: #444;
+      font-weight: 400;
+      line-height: 1.6;
+    }
+
+    .thumb::before,
+    .thumb::after {
+      background: none !important;
+    }
+
+    .thumb img {
+      filter: brightness(1) !important;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+	  justify-content: center; 
+    }
+
+    /* ボタンレイアウト調整 */
+    .actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      padding: 0;
+      margin: 1.5em 0;
+      list-style: none;
+    }
+    .actions li {
+      margin: 0;
+    }
+
+    /* ボタン枠と縦中央揃え */
+    .actions .button {
+      border: 2px solid #333333;
+      color: #333333;
+      padding: 0.75em 1.5em;
+      border-radius: 6px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      line-height: normal;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+     .actions .button:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+      color: #333333 !important;
+      background: transparent !important;
+      border-color: #333333 !important;
+    }
+
+    .task-card {
+      background: #f9fafb;
+      border-radius: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-bottom: 2rem;
+      flex: 1 1 calc(50% - 1rem) !important;
+    }
+
+    .task-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .task-card .tc-header img {
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+	width: 70%;
+	height: auto;
+	}
+    .tc-divider {
+      height: 1px;
+      background-color: #e0e0e0;
+      margin: 0;
+    }
+
+    .task-card .tc-body {
+      padding: 1.8rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .task-card .tc-body h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #222;
+    }
+
+    .task-card .tc-body p {
+      flex-grow: 1;
+      margin: 0;
+      line-height: 1.6;
+      color: #444;
+    }
+
+	/* style タグの末尾に追加してください */
+body {
+  position: relative;
+  top: -5rem;  /* 2行分上に移動 */
+  /* 必要に応じて -1.8rem や -2.2rem に微調整してください */
+}
+
+  </style>
 </head>
-<body>
-    <header>
-        <h1>Deep Sea Exploration</h1>
-        <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#species">Species</a></li>
-            <li><a href="#expeditions">Expeditions</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        </nav>
-    </header>
+<body class="is-preload">
 
-    <main>
-        <section id="about">
-        <div class="container">
-            <h2>About Deep Sea Exploration</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum nisi eu mauris rutrum, non efficitur elit interdum. Curabitur semper turpis id tristique mattis. Vestibulum ac dui non massa tempus ultrices. Nulla facilisi. Proin tincidunt velit ut velit auctor malesuada.</p>
-            <p>Sed finibus congue diam, in dictum mauris aliquam in. Aliquam interdum elit sit amet tellus efficitur, vitae bibendum odio semper. Aenean lobortis neque non facilisis finibus. Donec a finibus nisl.</p>
-        </div>
-        </section>
+  <!-- ヘッダー -->
+  <header id="header">
+    <div class="inner" style="text-align: center;">
+      <a href="#" class="image avatar" style="display: inline-block; margin-bottom: 1em;">
+        <img src="images/avatar.jpg" alt="" style="border-radius: 50%; width: 100px;" />
+      </a>
+      <h1 style="color: white; font-size: 1.3em; line-height: 2.2; text-shadow: 0 0 5px rgba(0,0,0,0.5); margin-top: 0.5em;">
+        <strong>はじめまして、野地天心 です。</strong><br />
+        ソフトウェアエンジニアを目指して、<br />
+        実践的なスキルを磨いています。
+      </h1>
+    </div>
+  </header>
 
-        <section id="species">
-        <div class="container">
-            <h2>Deep Sea Species</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum nisi eu mauris rutrum, non efficitur elit interdum. Curabitur semper turpis id tristique mattis. Vestibulum ac dui non massa tempus ultrices. Nulla facilisi. Proin tincidunt velit ut velit auctor malesuada.</p>
-            <p>Sed finibus congue diam, in dictum mauris aliquam in. Aliquam interdum elit sit amet tellus efficitur, vitae bibendum odio semper. Aenean lobortis neque non facilisis finibus. Donec a finibus nisl.</p>
-        </div>
-        </section>
+  <!-- メイン -->
+  <div id="main">
 
-        <section id="expeditions">
-        <div class="container">
-            <h2>Expeditions</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum nisi eu mauris rutrum, non efficitur elit interdum. Curabitur semper turpis id tristique mattis. Vestibulum ac dui non massa tempus ultrices. Nulla facilisi. Proin tincidunt velit ut velit auctor malesuada.</p>
-            <p>Sed finibus congue diam, in dictum mauris aliquam in. Aliquam interdum elit sit amet tellus efficitur, vitae bibendum odio semper. Aenean lobortis neque non facilisis finibus. Donec a finibus nisl.</p>
-        </div>
-        </section>
+    <!-- セクション1：自己紹介 -->
+    <section id="one">
+      <header class="major">
+        <h2>
+          伝統楽器からITの世界へ<br />
+          <span style="display:inline-block; margin-top:0.5em;">
+            未知の分野に挑み、学び続けています
+          </span>
+        </h2>
 
-        <section id="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dictum nisi eu mauris rutrum, non efficitur elit interdum. Curabitur semper turpis id tristique mattis. Vestibulum ac dui non massa tempus ultrices. Nulla facilisi. Proin tincidunt velit ut velit auctor malesuada.</p>
-            <p>Sed finibus congue diam, in dictum mauris aliquam in. Aliquam interdum elit sit amet tellus efficitur, vitae bibendum odio semper. Aenean lobortis neque non facilisis finibus. Donec a finibus nisl.</p>
-        </div>
-        </section>
-    </main>
+		<br>
+      </header>
 
-    <footer>
-        <div class="container">
-        <p>&copy; 2023 Deep Sea Exploration</p>
+      <p>
+        10歳で津軽三味線を始め、国内外の舞台で演奏する中で、
+        「自己改善力」「柔軟な吸収力」「集中力」を培ってきました。
+        これらを糧に、コロナ禍を機に未経験からエンジニアリングに挑戦し、<br>
+        独学で複数のバックエンドプロジェクトを開発しています。
+      </p>
+	  <br>
+      <p>
+        これまでソフトウェアエンジニアを目指して学習し、複数のプロジェクトを開発してきました。<br />
+        ここでは、これまでに開発したプロジェクトと、
+        津軽三味線の活動実績をご紹介します。
+      </p>
+      <ul class="actions">
+        <li><a href="#two" class="button">プロジェクトを見る</a></li>
+        <li><a href="#three" class="button">演奏実績を見る</a></li>
+        <li><a href="https://github.com/BackendExplorer?tab=repositories" class="button">GitHubを開く</a></li>
+      </ul>
+
+      <section class="tech-stack-single">
+        <h3>使用技術スタック</h3>
+        <div class="tech-card-single">
+          <ul>
+            <li><strong>バックエンド：</strong>Python / Django</li>
+            <li><strong>データベース：</strong>MySQL</li>
+            <li><strong>その他：</strong>Git / GitHub / Docker / EC2</li>
+            <li><strong>開発環境：</strong>Visual Studio Code / Linux / GitHub Actions</li>
+          </ul>
         </div>
-    </footer>
+      </section>
+
+    </section>
+
+    <!-- セクション2：プロジェクト一覧 -->
+    <section id="two">
+		<h2 style="font-weight: 1000; font-size: 1.8rem;">プロジェクト一覧</h2>
+
+
+
+      <div class="row">
+        <article class="task-card">
+          <div class="tc-header"><img src="images/thumbs/api.jpg" alt="API Project" /></div>
+          <div class="tc-divider"></div>
+          <div class="tc-body">
+            <h3>Online Chat Service</h3>
+            <p>独自プロトコル・暗号通信・マルチスレッドに対応したリアルタイムチャットアプリ。TCP/UDP通信、RSA＋AES暗号、Docker構築、CI対応。</p>
+            <br>
+			<p>
+				<a href="https://github.com/BackendExplorer/Online-Chat#readme" target="_blank" class="small-fancy-button">
+					READMEを見る
+				</a>
+			</p>
+
+
+          </div>
+        </article>
+        <article class="task-card">
+          <div class="tc-header"><img src="images/thumbs/portfolio.jpg" alt="Portfolio Project" /></div>
+          <div class="tc-divider"></div>
+          <div class="tc-body">
+            <h3>このポートフォリオサイト</h3>
+            <p>HTML/CSS/JavaScriptで作成した静的サイト。プロジェクトや連絡先を掲載。</p>
+			<br>
+			<p>
+				<a href="https://github.com/BackendExplorer/Online-Chat#readme" target="_blank" class="small-fancy-button">
+					READMEを見る
+				</a>
+			</p>
+          </div>
+        </article>
+
+		        <article class="task-card">
+          <div class="tc-header"><img src="images/thumbs/portfolio.jpg" alt="Portfolio Project" /></div>
+          <div class="tc-divider"></div>
+          <div class="tc-body">
+            <h3>Meal Review App</h3>
+            <p>HTML/CSS/JavaScriptで作成した静的サイト。プロジェクトや連絡先を掲載。</p>
+			<br>
+			<p>
+				<a href="https://github.com/BackendExplorer/Online-Chat#readme" target="_blank" class="small-fancy-button">
+					READMEを見る
+				</a>
+			</p>
+          </div>
+        </article>
+
+
+		        <article class="task-card">
+          <div class="tc-header"><img src="images/thumbs/poke.jpg" alt="Portfolio Project" /></div>
+          <div class="tc-divider"></div>
+          <div class="tc-body">
+			<h3>
+			Pokemon Viewer
+			
+			</h3>
+
+            <p>HTML/CSS/JavaScriptで作成した静的サイト。プロジェクトや連絡先を掲載。</p>
+			<br>
+			<p>
+				<a href="https://github.com/BackendExplorer/Online-Chat#readme" target="_blank" class="small-fancy-button">
+					READMEを見る
+				</a>
+			</p>
+          </div>
+        </article>
+
+
+	   </div>
+    </section>
+
+	
+
+    <!-- セクション3：津軽三味線の活動実績 -->
+<section id="works" class="py-16 animate-fade-in-up">
+  <div class="container mx-auto text-center">
+    <h2 class="text-4xl font-semibold mb-12 text-emerald-700">津軽三味線の活動実績</h2>
+
+    <!-- 上段：チュニジア & オリンピック -->
+    <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 mb-8">
+      <!-- チュニジア -->
+      <div class="w-full md:w-1/2">
+        <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300 animate-fade-in-up h-full">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="images/thumbs/tu.jpg" alt="チュニジア演奏" class="w-full h-full object-cover rounded-t-2xl shadow-sm">
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">チュニジア大統領官邸</h3>
+            <p class="text-gray-600">政府高官の前で演奏を披露</p>
+            <div class="flex flex-col gap-2">
+              <a href="#" class="text-emerald-600 hover:underline">チュニジア大統領府からの公式招待状</a>
+              <a href="#" class="text-emerald-600 hover:underline">新聞の切り抜きを見る</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 東京オリンピック -->
+      <div class="w-full md:w-1/2">
+        <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300 animate-fade-in-up h-full">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="images/thumbs/gi.jpg" alt="ギネス世界記録達成" class="w-full h-full object-cover rounded-t-2xl shadow-sm">
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">東京オリンピック ギネス記録</h3>
+            <p class="text-gray-600">日本武道館における東京オリンピック開会式のデモ演奏にて最多同時演奏人数でギネス認定</p>
+            <div class="flex flex-col gap-2">
+              <a href="#" class="text-emerald-600 hover:underline">ギネス認定書を見る</a>
+              <a href="#" class="text-emerald-600 hover:underline">演奏動画を見る</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 下段：愛知芸術劇場 -->
+    <div class="flex justify-center">
+      <div class="w-full md:w-1/2">
+        <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300 animate-fade-in-up h-full">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="images/thumbs/gei.jpg" alt="愛知芸術劇場演奏" class="w-full h-full object-cover rounded-t-2xl shadow-sm">
+          </div>
+          <div class="p-6 space-y-4">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">愛知芸術劇場特別ゲスト</h3>
+            <p class="text-gray-600">プロ演歌歌手との共演を果たす。</p>
+            <div class="flex flex-col gap-2">
+              <a href="#" class="text-emerald-600 hover:underline">演奏動画を見る</a>
+              <a href="#" class="text-emerald-600 hover:underline">関連資料を見る</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+  </div>
+
+  <!-- フッター -->
+  <footer id="footer">
+    <div class="inner" style="text-align:center;">
+      <p style="margin:2em 0 1em; font-size:0.85em; color:rgba(255,255,255,0.75); text-shadow:0 0 3px rgba(0,0,0,0.5); letter-spacing:0.05em;">
+        <i class="fas fa-clock" style="margin-right:0.3em;"></i>最終更新日: 2025年5月22日
+      </p>
+    </div>
+  </footer>
+
+  <!-- スクリプト -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.poptrox.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
