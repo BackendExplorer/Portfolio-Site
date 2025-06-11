@@ -173,7 +173,8 @@
 | CSSフレームワーク | ![TailwindCSS](https://img.shields.io/badge/Style-Tailwind_CSS-38B2AC?logo=tailwindcss&logoColor=white) |
 | エディタ       | ![VSCode](https://img.shields.io/badge/Editor-VSCode-blue?logo=visualstudiocode&logoColor=white) |
 | バージョン管理 | ![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?logo=github&logoColor=white) |
-| デプロイ方法   | ![SSH](https://img.shields.io/badge/Deploy-SSH-green?logo=gnuprivacyguard&logoColor=white) |
+| 描画ツール     | ![draw.io](https://img.shields.io/badge/Diagram-draw.io-orange)&nbsp;&nbsp;&nbsp;&nbsp;![LaTeX](https://img.shields.io/badge/Doc-LaTeX-9cf) |
+
 
 <br>
 
