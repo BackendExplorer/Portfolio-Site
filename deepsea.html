@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>ポートフォリオ | バックエンドエンジニア志望</title>
+  <title>Portfolio Site</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -19,7 +19,7 @@
 .small-fancy-button {
   display: inline-block;
   padding: 6px 16px;
-  background: linear-gradient(to right, #28a745, #43c67a); /* 中間トーンの落ち着いた緑 */
+  background: linear-gradient(to right, #28a745, #43c67a);
   color: white;
   font-weight: bold;
   text-decoration: none;
@@ -27,6 +27,8 @@
   font-size: 14px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  outline: none; /* ← 追加 */
+  border: none;  /* ← 念のため */
 }
 
 .small-fancy-button:hover {
@@ -44,17 +46,19 @@
 
 
 	
-/* ▼追加するコード */
 .task-card .tc-header {
-  background-color: #e6f6ff;   /* 爽やかな青 */
-  /* height: 160px;   ← この行は削除 */
-  padding: 32px 0;             /* ↑↓ に 32px の余白を追加して縦に伸ばす */
+  /* 余白（上下32px×2）＋画像領域160px ＝224px に固定 */
+  box-sizing: border-box;   /* paddingを含めて高さを制御 */
+  height: 224px;
+  padding: 32px 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #e6f6ff;
   overflow: hidden;
+  position: relative;       /* 画像をずらすベースに */
+  overflow: visible;        /* はみ出しを許可 */
 }
-
 
 section#two h2 {
   font-size: 1.6em;
@@ -153,18 +157,28 @@ section#two h2 {
     }
 
     /* ボタン枠と縦中央揃え */
-    .actions .button {
-      border: 2px solid #333333;
-      color: #333333;
-      padding: 0.75em 1.5em;
-      border-radius: 6px;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      line-height: normal;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+   .actions .button {
+  border: 2px solid #333333;
+  padding: 0.75em 1.8em;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  line-height: normal;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+
+  /* 修正後の文字スタイル */
+  font-size: 1rem;
+  font-weight: 500; /* ← 600よりもスッキリ感あり */
+  font-family: 'Noto Sans JP', sans-serif;
+  letter-spacing: 0.01em; /* ← 微調整して詰まりすぎず広がりすぎず */
+  color: #222222;
+  text-shadow: none; /* ← にじみを防ぐため完全になしにする */
+}
+
      .actions .button:hover {
       transform: translateY(-6px);
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
@@ -193,10 +207,19 @@ section#two h2 {
     }
 
     .task-card .tc-header img {
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-	width: 70%;
-	height: auto;
-	}
+  /* 浮き上がり効果 */
+  position: relative;
+  top: -3px;                    /* 上方向へ20px持ち上げ */
+  background-color: #fff;        /* 白い“カード”感 */
+  padding: 8px;                  /* ふんわり余白 */
+  border-radius: 8px;            /* 角丸 */
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);  /* ドロップシャドウ */
+  z-index: 1;                    /* 背景より前面に */
+
+  /* サイズ制限はこれまで通り */
+  max-height: 160px;
+  width: auto;
+}
     .tc-divider {
       height: 1px;
       background-color: #e0e0e0;
@@ -279,18 +302,18 @@ body {
       </p>
       <ul class="actions">
         <li><a href="#two" class="button">プロジェクトを見る</a></li>
-        <li><a href="#three" class="button">演奏実績を見る</a></li>
+        <li><a href="#works" class="button">演奏実績を見る</a></li>
         <li><a href="https://github.com/BackendExplorer?tab=repositories" class="button">GitHubを開く</a></li>
       </ul>
 
       <section class="tech-stack-single">
-        <h3>使用技術スタック</h3>
+        <h3>技術スタック</h3>
         <div class="tech-card-single">
           <ul>
-            <li><strong>バックエンド：</strong>Python / Django</li>
-            <li><strong>データベース：</strong>MySQL</li>
-            <li><strong>その他：</strong>Git / GitHub / Docker / EC2</li>
-            <li><strong>開発環境：</strong>Visual Studio Code / Linux / GitHub Actions</li>
+            <li><strong>バックエンド：</strong>Python / Go</li>
+            <li><strong>データベース：</strong>SQLite</li>
+            <li><strong>その他：</strong>Git / GitHub / GitHub Actions / ßDocker / EC2</li>
+            <li><strong>開発環境：</strong>Visual Studio Code / Linux </li>
           </ul>
         </div>
       </section>
@@ -299,20 +322,102 @@ body {
 
     <!-- セクション2：プロジェクト一覧 -->
     <section id="two">
-		<h2 style="font-weight: 1000; font-size: 1.8rem;">プロジェクト一覧</h2>
+		<h2 class="!text-[2.4rem] font-extrabold text-center mb-10 
+           text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 via-teal-500 to-sky-500 
+           drop-shadow-lg tracking-wide">
+  プロジェクト一覧
+</h2>
+
+
+  
 
 
 
       <div class="row">
+
+        <article class="task-card">
+          <div class="tc-header"><img src="images/thumbs/video.jpg" alt="Portfolio Project" /></div>
+          <div class="tc-divider"></div>
+          <div class="tc-body">
+            <h3>Video Processor</h3>
+            <p>動画の圧縮、解像度変更、音声抽出、<br>GIF作成 などができるシステム</p>
+<div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+              Python
+  </span>
+
+<span class="bg-blue-100 text-blue-800 text-sm font-normal px-3 py-1 rounded-lg">
+  ソケット通信
+  </span>
+
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    FFmpeg
+  </span>
+
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    Streamlit
+  </span>
+
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    Docker
+  </span>
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    GitHub Actions
+  </span>
+
+
+</div>
+
+			<br>
+			<p>
+				<a href="https://github.com/BackendExplorer/Video-Processor?tab=readme-ov-file#readme" target="_blank" class="small-fancy-button">
+					READMEを見る
+				</a>
+			</p>
+          </div>
+        </article>
+
+
         <article class="task-card">
           <div class="tc-header"><img src="images/thumbs/api.jpg" alt="API Project" /></div>
           <div class="tc-divider"></div>
           <div class="tc-body">
             <h3>Online Chat Service</h3>
-            <p>独自プロトコル・暗号通信・マルチスレッドに対応したリアルタイムチャットアプリ。TCP/UDP通信、RSA＋AES暗号、Docker構築、CI対応。</p>
+            <p>グループチャットができるアプリ</p>
+            
+<div class="flex flex-wrap gap-2 mt-2">
+  <!-- 英語：font-semibold -->
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    Python
+  </span>
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    Docker
+  </span>
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    GitHub Actions
+  </span>
+
+  <!-- 日本語：font-normal（見た目を合わせる） -->
+  <span class="bg-blue-100 text-blue-800 text-sm font-normal px-3 py-1 rounded-lg">
+    ハイブリッド暗号
+  </span>
+  <span class="bg-blue-100 text-blue-800 text-sm font-normal px-3 py-1 rounded-lg">
+    マルチスレッド
+  </span>
+  <span class="bg-blue-100 text-blue-800 text-sm font-normal px-3 py-1 rounded-lg">
+  ソケット通信
+  </span>
+
+
+  <!-- 英語：font-semibold -->
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    Streamlit
+  </span>
+</div>
+
             <br>
 			<p>
-				<a href="https://github.com/BackendExplorer/Online-Chat#readme" target="_blank" class="small-fancy-button">
+				<a href="https://github.com/BackendExplorer/Online-Chat-Service/tree/main?tab=readme-ov-file#readme" target="_blank" class="small-fancy-button">
 					READMEを見る
 				</a>
 			</p>
@@ -320,38 +425,62 @@ body {
 
           </div>
         </article>
+
+        
+
+        
+
         <article class="task-card">
           <div class="tc-header"><img src="images/thumbs/portfolio.jpg" alt="Portfolio Project" /></div>
           <div class="tc-divider"></div>
           <div class="tc-body">
-            <h3>このポートフォリオサイト</h3>
-            <p>HTML/CSS/JavaScriptで作成した静的サイト。プロジェクトや連絡先を掲載。</p>
+            <h3>Portfolio Site</h3>
+            <p>このウェブサイトは、EC2 と Nginx に<br>よってデプロイされています。</p>
+
+<div class="flex flex-wrap gap-2 mt-2">
+  <!-- 英語：font-semibold -->
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    EC2
+  </span>
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    Nginx
+  </span>
+
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    Github Actions
+  </span>
+
+
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    HTML
+  </span>
+
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    CSS
+  </span>
+
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    JavaScript
+  </span>
+
+
+  
+</div>
+
+
+
+
 			<br>
 			<p>
-				<a href="https://github.com/BackendExplorer/Online-Chat#readme" target="_blank" class="small-fancy-button">
+				<a href="https://github.com/BackendExplorer/project-deepsea-website/tree/main?tab=readme-ov-file#readme" target="_blank" class="small-fancy-button">
 					READMEを見る
 				</a>
 			</p>
           </div>
         </article>
 
-		        <article class="task-card">
-          <div class="tc-header"><img src="images/thumbs/portfolio.jpg" alt="Portfolio Project" /></div>
-          <div class="tc-divider"></div>
-          <div class="tc-body">
-            <h3>Meal Review App</h3>
-            <p>HTML/CSS/JavaScriptで作成した静的サイト。プロジェクトや連絡先を掲載。</p>
-			<br>
-			<p>
-				<a href="https://github.com/BackendExplorer/Online-Chat#readme" target="_blank" class="small-fancy-button">
-					READMEを見る
-				</a>
-			</p>
-          </div>
-        </article>
 
-
-		        <article class="task-card">
+        <article class="task-card">
           <div class="tc-header"><img src="images/thumbs/poke.jpg" alt="Portfolio Project" /></div>
           <div class="tc-divider"></div>
           <div class="tc-body">
@@ -359,16 +488,41 @@ body {
 			Pokemon Viewer
 			
 			</h3>
+<p class="mt-2 text-gray-700">
+  <span class="font-bold text-blue-600">チーム開発</span>でバックエンドを担当。
+</p>
 
-            <p>HTML/CSS/JavaScriptで作成した静的サイト。プロジェクトや連絡先を掲載。</p>
+            <p>ポケモンAPIから取得した情報を<br>閲覧できるGolangアプリ。</p>
+
+            
+
+<div class="flex flex-wrap gap-2 mt-2">
+            <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+              Go
+  </span>
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    TypeScript
+  </span>
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    React
+  </span>
+
+  <span class="bg-blue-100 text-blue-800 text-sm font-semibold px-3 py-1 rounded-lg">
+    Vite
+  </span>
+
+</div>
 			<br>
 			<p>
-				<a href="https://github.com/BackendExplorer/Online-Chat#readme" target="_blank" class="small-fancy-button">
+				<a href="https://github.com/BackendExplorer/Pokemon-Viewer-Golang?tab=readme-ov-file#readme" target="_blank" class="small-fancy-button">
 					READMEを見る
 				</a>
 			</p>
           </div>
         </article>
+
+		        
+		        
 
 
 	   </div>
@@ -381,62 +535,60 @@ body {
   <div class="container mx-auto text-center">
     <h2 class="text-4xl font-semibold mb-12 text-emerald-700">津軽三味線の活動実績</h2>
 
-    <!-- 上段：チュニジア & オリンピック -->
+    <!-- 上段 -->
     <div class="flex flex-col md:flex-row justify-center items-stretch gap-8 mb-8">
+      
       <!-- チュニジア -->
       <div class="w-full md:w-1/2">
-        <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300 animate-fade-in-up h-full">
-          <div class="aspect-[4/3] overflow-hidden">
+        <div class="flex flex-col h-full bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300">
+          <div class="basis-2/3 overflow-hidden">
             <img src="images/thumbs/tu.jpg" alt="チュニジア演奏" class="w-full h-full object-cover rounded-t-2xl shadow-sm">
           </div>
-          <div class="p-6 space-y-4">
+          <div class="basis-1/3 p-6 space-y-4 flex flex-col justify-center">
             <h3 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">チュニジア大統領官邸</h3>
-            <p class="text-gray-600">政府高官の前で演奏を披露</p>
-            <div class="flex flex-col gap-2">
-              <a href="#" class="text-emerald-600 hover:underline">チュニジア大統領府からの公式招待状</a>
-              <a href="#" class="text-emerald-600 hover:underline">新聞の切り抜きを見る</a>
-            </div>
+            <p class="text-gray-700 text-base leading-relaxed">
+              チュニジア大統領から招待され、<br>
+              政府高官の前で演奏
+            </p>
           </div>
         </div>
       </div>
 
       <!-- 東京オリンピック -->
       <div class="w-full md:w-1/2">
-        <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300 animate-fade-in-up h-full">
-          <div class="aspect-[4/3] overflow-hidden">
+        <div class="flex flex-col h-full bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300">
+          <div class="basis-2/3 overflow-hidden">
             <img src="images/thumbs/gi.jpg" alt="ギネス世界記録達成" class="w-full h-full object-cover rounded-t-2xl shadow-sm">
           </div>
-          <div class="p-6 space-y-4">
+          <div class="basis-1/3 p-6 space-y-4 flex flex-col justify-center">
             <h3 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">東京オリンピック ギネス記録</h3>
-            <p class="text-gray-600">日本武道館における東京オリンピック開会式のデモ演奏にて最多同時演奏人数でギネス認定</p>
-            <div class="flex flex-col gap-2">
-              <a href="#" class="text-emerald-600 hover:underline">ギネス認定書を見る</a>
-              <a href="#" class="text-emerald-600 hover:underline">演奏動画を見る</a>
-            </div>
+            <p class="text-gray-700 text-base leading-relaxed">
+              日本武道館での開会式デモ演奏に参加し、<br>
+              最多同時演奏人数でギネス記録を達成
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- 下段：愛知芸術劇場 -->
+    <!-- 下段 -->
     <div class="flex justify-center">
       <div class="w-full md:w-1/2">
-        <div class="bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300 animate-fade-in-up h-full">
-          <div class="aspect-[4/3] overflow-hidden">
+        <div class="flex flex-col h-full bg-white/70 backdrop-blur-sm shadow-lg rounded-2xl overflow-hidden border border-emerald-200 hover:scale-105 transition-transform duration-300">
+          <div class="basis-2/3 overflow-hidden">
             <img src="images/thumbs/gei.jpg" alt="愛知芸術劇場演奏" class="w-full h-full object-cover rounded-t-2xl shadow-sm">
           </div>
-          <div class="p-6 space-y-4">
-            <h3 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">愛知芸術劇場特別ゲスト</h3>
-            <p class="text-gray-600">プロ演歌歌手との共演を果たす。</p>
-            <div class="flex flex-col gap-2">
-              <a href="#" class="text-emerald-600 hover:underline">演奏動画を見る</a>
-              <a href="#" class="text-emerald-600 hover:underline">関連資料を見る</a>
-            </div>
+          <div class="basis-1/3 p-6 space-y-4 flex flex-col justify-center">
+            <h3 class="text-xl md:text-2xl font-bold text-gray-800 whitespace-nowrap">愛知芸術劇場 特別ゲスト</h3>
+            <p class="text-gray-700 text-base leading-relaxed">
+              プロ演歌歌手の公演にゲスト出演。<br>
+              限られた練習期間でも仕上げきる力と、<br>
+              ステージでの柔軟な対応力を養いました。
+            </p>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -447,7 +599,7 @@ body {
   <footer id="footer">
     <div class="inner" style="text-align:center;">
       <p style="margin:2em 0 1em; font-size:0.85em; color:rgba(255,255,255,0.75); text-shadow:0 0 3px rgba(0,0,0,0.5); letter-spacing:0.05em;">
-        <i class="fas fa-clock" style="margin-right:0.3em;"></i>最終更新日: 2025年5月22日
+        <i class="fas fa-clock" style="margin-right:0.3em;"></i>最終更新日: 2025年6月11日
       </p>
     </div>
   </footer>
@@ -459,5 +611,7 @@ body {
   <script src="assets/js/breakpoints.min.js"></script>
   <script src="assets/js/util.js"></script>
   <script src="assets/js/main.js"></script>
+
+  
 </body>
 </html>
